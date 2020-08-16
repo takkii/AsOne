@@ -3,6 +3,9 @@ using System.IO;
 using System.Net;
 using System.Text;
 
+// 開発名 : AsOne (全員一致)
+// 内容   : SideKickと同じ処理、AsOneの方が高速 
+
 namespace AsOne
 {
     class Program
