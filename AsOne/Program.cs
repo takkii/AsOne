@@ -10,7 +10,7 @@ namespace AsOne
 {
     class Program
     {
-        public static void Main()
+        static void Main(string[] args)
         {
             WebClient wctd = new WebClient();
             wctd.DownloadFile(
