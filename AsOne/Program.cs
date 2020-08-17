@@ -12,29 +12,34 @@ namespace AsOne
     {
         static void Main(string[] args)
         {
-            WebClient wctd = new WebClient();
-            wctd.DownloadFile(
-              "https://www.data.jma.go.jp/obd/stats/data/mdrr/pre_rct/alltable/pre1h00_rct.csv",
-              "pre01.csv");
-
-            string filePath = @"pre01.csv";
-            StreamReader reader = new StreamReader(filePath, Encoding.GetEncoding("shift_jis"));
-
-            while (reader.Peek() >= 0)
+            try
             {
-                StreamWriter sw = new StreamWriter(
-                "tenki.txt",
-                true,
-                Encoding.UTF8);
+                WebClient wctd = new WebClient();
+                wctd.DownloadFile(
+                  "https://www.data.jma.go.jp/obd/stats/data/mdrr/pre_rct/alltable/pre1h00_rct.csv",
+                  "pre01.csv");
 
-                Console.SetOut(sw);
-                string[] cols = reader.ReadLine().Split(',');
-                for (int n = 0; n < cols.Length; n++)
-                    Console.Write(cols[n] + "\t");
-                Console.WriteLine("");
-                sw.Dispose(); 
+                string filePath = @"pre01.csv";
+                StreamReader reader = new StreamReader(filePath, Encoding.GetEncoding("shift_jis"));
+
+                while (reader.Peek() >= 0)
+                {
+                    StreamWriter sw = new StreamWriter(
+                    "tenki.txt",
+                    true,
+                    Encoding.UTF8);
+
+                    Console.SetOut(sw);
+                    string[] cols = reader.ReadLine().Split(',');
+                    for (int n = 0; n < cols.Length; n++)
+                        Console.Write(cols[n] + "\t");
+                    Console.WriteLine("");
+                    sw.Dispose();
+                }
+                reader.Close();
+            }catch (IndexOutOfRangeException ex) {
+                Console.WriteLine(ex);
             }
-            reader.Close();
         }
     }
 }
