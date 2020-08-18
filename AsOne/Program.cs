@@ -37,8 +37,14 @@ namespace AsOne
                     sw.Dispose();
                 }
                 reader.Close();
-            }catch (IndexOutOfRangeException ex) {
+            }
+            catch (IndexOutOfRangeException ex)
+            {
                 Console.WriteLine(ex);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
         }
     }
