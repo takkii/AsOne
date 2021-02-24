@@ -46,6 +46,10 @@ namespace AsOne
             {
                 Console.WriteLine(e);
             }
+            finally
+            {
+                GC.Collect();
+            }
         }
     }
 }
